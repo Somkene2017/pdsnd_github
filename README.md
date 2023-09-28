@@ -71,6 +71,10 @@ earliest, most recent, most common year of birth (only available for NYC and Chi
 - chicago.csv
 - new_york_city.csv
 - washington.csv
+- numpy
+- pandas
+- plotly.express
+- streamlit
 
 ### Credits
 ### 1) https://docs.streamlit.io/library
