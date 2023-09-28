@@ -4,12 +4,6 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 
-# References: 
-# 1) https://docs.streamlit.io/library
-# 2) https://gist.github.com/rxaviers/7360908
-# 3) https://youtu.be/_Um12_OlGgw?si=LUJMz9CNax6aSSkC
-# 4) https://youtu.be/vIQQR_yq-8I?si=AbOO57_xpN9XsrmE
-
 
 
 CITY_DATA = { 'chicago': 'chicago.csv',
@@ -265,10 +259,10 @@ def main():
 
         #This tab contains the necessary charts of the descriptive statistics
         with tab3:
-            visual_value = st.selectbox("Choose a column to see the count of its unique values: ", [None, 'Start Station', 'End Station', 'combination_station'])
+            visual_variable = st.selectbox("Choose a column to see the count of its unique values: ", [None, 'Start Station', 'End Station', 'combination_station'])
         
-            if visual_value is not None:
-                plotter(visual_value, df)
+            if visual_variable is not None:
+                plotter(visual_variable, df)
         
         # Click button to restart the whole program
         st.button("Restart:o:", on_click=set_stage, args=[0])
