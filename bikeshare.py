@@ -98,17 +98,20 @@ def station_stats(df):
 
     with tab1:
         # display most commonly used start station
-        st.metric("Most commonly used Start Station", df['Start Station'].mode()[0])
+        common_start_station = df['Start Station'].mode()
+        st.metric("Most commonly used Start Station", common_start_station[0])
 
     with tab2:
         # display most commonly used end station
-        st.metric("Most commonly used End Station:", df['End Station'].mode()[0])
+        common_end_station = df['End Station'].mode()
+        st.metric("Most commonly used End Station:", common_end_station[0])
 
     with tab3:
         # display most frequent combination of start station and end station trip
         df['combination_station'] = df['Start Station'] + " + " + df['End Station']
         st.markdown(f"###### Most Frequent combination of Start - End station:") 
-        st.markdown(f"#### {df['combination_station'].mode()[0]}")
+        common_combination_station = df['combination_station'].mode()
+        st.markdown(f"#### {common_combination_station[0]}")
         
     st.write("\nThis took {} seconds.".format(round(time.time() - start_time, 3)))
     st.write('-'*40)
