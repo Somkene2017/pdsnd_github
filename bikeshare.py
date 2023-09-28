@@ -1,8 +1,8 @@
-import streamlit as st
-import time
-import pandas as pd
-import numpy as np
-import plotly.express as px
+import streamlit as st # this is the python web framework used for the web app development
+import time # this is the package used to calculate the descriptive statistics processing time
+import pandas as pd # this package was used for data manipulation for each Bikeshare data
+import numpy as np #this package was used for creating an array for selectbox list
+import plotly.express as px # this package was used for the chat plot
 
 # References: 
 # 1) https://docs.streamlit.io/library
