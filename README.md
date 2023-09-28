@@ -68,8 +68,13 @@ earliest, most recent, most common year of birth (only available for NYC and Chi
  You have to key in details as it is prompted by each stage.
 
 ### Files used
-Include the files used
+- chicago.csv
+- new_york_city.csv
+- washington.csv
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+### 1) https://docs.streamlit.io/library
+### 2) https://gist.github.com/rxaviers/7360908
+### 3) https://youtu.be/_Um12_OlGgw?si=LUJMz9CNax6aSSkC
+### 4) https://youtu.be/vIQQR_yq-8I?si=AbOO57_xpN9XsrmE
 
