@@ -4,12 +4,6 @@ import pandas as pd # this package was used for data manipulation for each Bikes
 import numpy as np #this package was used for creating an array for selectbox list
 import plotly.express as px # this package was used for the chat plot
 
-# References: 
-# 1) https://docs.streamlit.io/library
-# 2) https://gist.github.com/rxaviers/7360908
-# 3) https://youtu.be/_Um12_OlGgw?si=LUJMz9CNax6aSSkC
-# 4) https://youtu.be/vIQQR_yq-8I?si=AbOO57_xpN9XsrmE
-
 
 
 CITY_DATA = { 'chicago': 'chicago.csv',
@@ -59,14 +53,18 @@ def time_stats(df):
     st.write('#### Calculating The Most Frequent Times of Travel...')
     start_time = time.time()
     col1, col2, col3 = st.columns(3)
+
     # display the most common month
-    col1.metric("Most common month", df['month'].mode()[0])
+    common_month = df['month'].mode()
+    col1.metric("Most common month", common_month[0])
 
     # display the most common day of week
-    col2.metric("Most common day of week", df['day_of_week'].mode()[0])
+    common_day = df['day_of_week'].mode()
+    col2.metric("Most common day of week", common_day[0])
 
     # display the most common start hour
-    col3.metric("Most common start hour", f"{df['Start Time'].dt.hour.mode()[0]}:00")
+    common_day = df['Start Time'].dt.hour.mode()
+    col3.metric("Most common start hour", f"{common_day[0]}:00")
  
 
     st.write("\nThis took {} seconds.".format(round(time.time() - start_time, 3)))
@@ -100,17 +98,20 @@ def station_stats(df):
 
     with tab1:
         # display most commonly used start station
-        st.metric("Most commonly used Start Station", df['Start Station'].mode()[0])
+        common_start_station = df['Start Station'].mode()
+        st.metric("Most commonly used Start Station", common_start_station[0])
 
     with tab2:
         # display most commonly used end station
-        st.metric("Most commonly used End Station:", df['End Station'].mode()[0])
+        common_end_station = df['End Station'].mode()
+        st.metric("Most commonly used End Station:", common_end_station[0])
 
     with tab3:
         # display most frequent combination of start station and end station trip
         df['combination_station'] = df['Start Station'] + " + " + df['End Station']
         st.markdown(f"###### Most Frequent combination of Start - End station:") 
-        st.markdown(f"#### {df['combination_station'].mode()[0]}")
+        common_combination_station = df['combination_station'].mode()
+        st.markdown(f"#### {common_combination_station[0]}")
         
     st.write("\nThis took {} seconds.".format(round(time.time() - start_time, 3)))
     st.write('-'*40)
@@ -265,10 +266,10 @@ def main():
 
         #This tab contains the necessary charts of the descriptive statistics
         with tab3:
-            visual_value = st.selectbox("Choose a column to see the count of its unique values: ", [None, 'Start Station', 'End Station', 'combination_station'])
+            visual_variable = st.selectbox("Choose a column to see the count of its unique values: ", [None, 'Start Station', 'End Station', 'combination_station'])
         
-            if visual_value is not None:
-                plotter(visual_value, df)
+            if visual_variable is not None:
+                plotter(visual_variable, df)
         
         # Click button to restart the whole program
         st.button("Restart:o:", on_click=set_stage, args=[0])
